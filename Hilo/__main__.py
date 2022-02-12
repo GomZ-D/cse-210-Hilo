@@ -1,3 +1,3 @@
 from .game.director import Director
-Director = director()
+director = Director()
 director.start_game()
