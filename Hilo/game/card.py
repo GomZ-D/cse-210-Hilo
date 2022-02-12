@@ -32,7 +32,10 @@ class Card:
             hilo (string): Answer of user if he wants Hi or Low
         """
         other_card = self.num_card
-        
+
+        while (other_card == self.num_card):
+            other_card = random.randint(1,13)
+
         if other_card < self.num_card:
             answer = 'l'
         else:
