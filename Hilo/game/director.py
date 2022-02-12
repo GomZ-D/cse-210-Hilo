@@ -1,3 +1,4 @@
+from game.card import Card
 class Director:
     def __init__(self):
         """A person who directs the game. 
@@ -5,13 +6,13 @@ class Director:
     The responsibility of a Director is to control the sequence of play.
 
     Attributes:
-        card (List[card]): A list of number of cards instances.
+        card (card): A cards instances.
         is_playing (boolean): Whether or not the game is being played.
         total_score (int): The score for the entire game.
         """
 
         self.is_playing = True
-        self.card = card()
+        self.card = Card()
         self.total_score = 300
 
     def start_game(self):
@@ -31,19 +32,37 @@ class Director:
         Args:
             self (Director): An instance of Director.
         """
-        pass
+        card = self.card.deal_card()
+        print(f'The card is: {card}')
+        hilo = input("Higher or lower [h\l]: ")
+        hilo = hilo.lower()
+        other_card=self.card.next_card(hilo)
+        print(f'Next card was: {other_card}')
+
+
     def do_updates(self):
         """Updates the player's score.
 
         Args:
             self (Director): An instance of Director.
         """
-        pass
+        self.total_score = self.total_score + self.card.points
     def do_outputs(self):
         """Display the score and asks the user if he wants to play again. 
         Args:
             self (Director): An instance of Director.
         """
-
-        pass
+        if self.total_score < 0:
+            self.is_playing = False
+            print ("Game Over")
+        print(f"Your score is: {self.total_score}")
+        print()
+        again = input("Play Again? [y/n]: ")
+        again = again.lower()
+        if again == "y":
+            self.is_playing
+        else:
+            self.is_playing = False
+            print("Thanks! Bye")
+        
     

@@ -22,10 +22,29 @@ class Card:
         Args:
             self (Card): An instance of Card.
         """
-        pass
+        self.num_card =  random.randint(1,13)
+        return self.num_card
 
     def next_card (self, hilo):
-        pass
+        """ gives another card and calculate the score
+        Args:
+            Self (Card): an instance of Card
+            hilo (string): Answer of user if he wants Hi or Low
+        """
+        other_card = self.num_card
+        
+        if other_card < self.num_card:
+            answer = 'l'
+        else:
+            answer = 'h'
+        
+        if answer == hilo:
+            self.points = 100
+        else:
+            self.points = -75
+        return other_card
+
+
 
         
     
