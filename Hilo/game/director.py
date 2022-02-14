@@ -55,6 +55,7 @@ class Director:
         if self.total_score < 0:
             self.is_playing = False
             print ("Game Over")
+            return
         print(f"Your score is: {self.total_score}")
         # print()
         again = input("Play Again? [y/n]: ")
